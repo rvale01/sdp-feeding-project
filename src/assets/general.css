@@ -1,0 +1,26 @@
+body {
+    padding: 0 0 30px 0;
+    background-color: #fafafa;
+    letter-spacing: -0.3px;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: open sans, Helvetica, Arial, sans-serif;
+  }
+
+.ant-card.criclebox {
+    box-shadow: 0px 20px 27px #0000000d;
+    border-radius: 12px;
+}
+
+/* ---LOGIN--- */
+.login-page{
+    width: 35%;
+    margin: 0 auto
+}
+.ant-card.login-page > .ant-card-body{
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
