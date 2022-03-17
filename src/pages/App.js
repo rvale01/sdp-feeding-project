@@ -12,6 +12,7 @@ import { Login } from './login'
 import { Home } from './home'
 
 //style
+import { Container } from '../components/molecules/Layout'
 import 'antd/dist/antd.css'
 import "../assets/general.css"
 
@@ -26,9 +27,11 @@ const ProtectedRoute = ({children}) =>{
 const App = () => {
   return (
     <Router>
+      <Container>
       <Routes>
         <Route path="/" exact element={<ProtectedRoute><Home/></ProtectedRoute>}/> 
       </Routes>
+      </Container>
     </Router>
   );
 }

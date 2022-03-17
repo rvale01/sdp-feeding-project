@@ -24,3 +24,14 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+/* ---LAYOUT--- */
+.sider{
+    display: flex;
+}
+.sidebar{
+    flex: 1
+}
+.content{
+    flex: 5
+}

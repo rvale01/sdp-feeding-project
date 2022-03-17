@@ -7,8 +7,10 @@ const { Title } = Typography;
 export const Home = () =>{
 
     return (
-        <Title>
-            Title: Home
-        </Title>
+        <div>
+            <Title>
+                Title: Home
+            </Title>
+        </div>
     )
 }
