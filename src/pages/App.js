@@ -10,6 +10,9 @@ import {
 //pages
 import { Login } from './login'
 import { Home } from './home'
+import { PatientsList } from './patientList'
+import { PatientDetails } from './patientDetails'
+import { UploadData } from './uploadData'
 
 //style
 import { Container } from '../components/molecules/Layout'
@@ -28,9 +31,12 @@ const App = () => {
   return (
     <Router>
       <Container>
-      <Routes>
-        <Route path="/" exact element={<ProtectedRoute><Home/></ProtectedRoute>}/> 
-      </Routes>
+        <Routes>
+          <Route path="/" exact element={<ProtectedRoute><Home/></ProtectedRoute>}/> 
+          <Route path="/patients-list" exact element={<ProtectedRoute><PatientsList/></ProtectedRoute>}/> 
+          <Route path="/patients-details/:id" exact element={<ProtectedRoute><PatientDetails/></ProtectedRoute>}/> 
+          <Route path="/upload-data" exact element={<ProtectedRoute><UploadData/></ProtectedRoute>}/> 
+        </Routes>
       </Container>
     </Router>
   );

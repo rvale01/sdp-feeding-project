@@ -7,7 +7,12 @@ body {
     line-height: 1.6;
     font-weight: 400;
     font-family: open sans, Helvetica, Arial, sans-serif;
-  }
+    height: 100vh
+}
+
+body > div, .full-height {
+    height: 100%;
+}
 
 .ant-card.criclebox {
     box-shadow: 0px 20px 27px #0000000d;
@@ -28,10 +33,47 @@ body {
 /* ---LAYOUT--- */
 .sider{
     display: flex;
+    height: 100%;
 }
 .sidebar{
-    flex: 1
+    flex: 1;
+    height: 100%;
 }
 .content{
-    flex: 5
+    flex: 5;
+    height: 100%;
+    margin: 2rem 1rem;
+}
+
+.menu{
+    background-color: transparent;
+    border: none;
+    color: black;
+    margin-top: 2rem;
+    padding-left: 1rem;
+}
+
+.ant-menu-item-selected{
+    box-shadow: 0px 20px 27px #0000000d;
+    background-color: white !important;
+    border-radius: 8px;
+}
+
+.ant-menu-item::after{
+    border-right: 0 !important;
+}
+
+/* -- UPLOAD DATA -- */
+.upload-data-card{
+    width: 40%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    margin: auto
+}
+
+.upload-data-container{
+    margin-top: 10rem;
 }
