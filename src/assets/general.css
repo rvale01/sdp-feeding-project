@@ -19,15 +19,36 @@ body > div, .full-height {
     border-radius: 12px;
 }
 
+.grid-2{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 0.9rem;
+}
+
+.vertical-align{
+    display: flex;
+    align-items: center;
+}
+
+.gap-2{
+    gap: 2rem
+}
+
 /* ---LOGIN--- */
 .login-page{
     width: 35%;
-    margin: 0 auto
 }
 .ant-card.login-page > .ant-card-body{
     gap: 1.5rem;
     display: flex;
     flex-direction: column;
+}
+
+.login-container{
+    /* width: 55%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ---LAYOUT--- */

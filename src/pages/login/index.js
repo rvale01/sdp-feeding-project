@@ -18,17 +18,19 @@ export const Login = () =>{
     const pass = useRef()
     
     return (
-        <Card className="criclebox login-page">
-            <Title level={2}>Sign In</Title>
-            <Input placeholder="email" ref={email}/>
-            <Input.Password placeholder="password" ref={pass}/>
-            <Button 
-                type="primary" 
-                size="large" 
-                loading = {status === 'loading'}
-                onClick={() => dispatch(loginUser({email:email.current.input.value, password: pass.current.input.value}))}>
-                Sign In
-            </Button>
-        </Card>
+        <div className="full-height login-container">
+            <Card className="criclebox login-page">
+                <Title level={2}>Sign In</Title>
+                <Input placeholder="email" ref={email}/>
+                <Input.Password placeholder="password" ref={pass}/>
+                <Button 
+                    type="primary" 
+                    size="large" 
+                    loading = {status === 'loading'}
+                    onClick={() => dispatch(loginUser({email:email.current.input.value, password: pass.current.input.value}))}>
+                    Sign In
+                </Button>
+            </Card>
+        </div>
     )
 }

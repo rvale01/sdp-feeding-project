@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit'
 
 import axios from 'axios'
 
@@ -17,9 +17,8 @@ export const loginSlice = createSlice({
     },
     reducers: {
         getPatient:(state, action)=>{
-            console.log("action?")
-            const singlePatient = state.list.filter((value)=>value)
-            console.log(singlePatient, 'single person')
+            const id = window.location.pathname.replace("/patients-details/", "")
+            state.singlePatient = state.list.filter(patient => patient.id === parseInt(id))[0];
         }
     },
     extraReducers: (builder) => {
