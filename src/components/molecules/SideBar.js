@@ -27,6 +27,12 @@ export const SideBar = () => {
                     <span className="label">Upload Data</span>
                 </NavLink>
             </Menu.Item>
+
+            <Menu.Item key="4" className={pathname === "/users" ? 'ant-menu-item-selected' : null}>
+                <NavLink to="/users">
+                    <span className="label">Users</span>
+                </NavLink>
+            </Menu.Item>
             {/* <SubMenu key="sub1" title="Patients">
                 <Menu.ItemGroup key="g1" title="Item 1">
                     <Menu.Item key="19">Option 1</Menu.Item>

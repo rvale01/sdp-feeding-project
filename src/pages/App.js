@@ -13,6 +13,7 @@ import { Home } from './home'
 import { PatientsList } from './patientList'
 import { PatientDetails } from './patientDetails'
 import { UploadData } from './uploadData'
+import { Users } from './users'
 
 //style
 import { Container } from '../components/molecules/Layout'
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/patients-list" exact element={<ProtectedRoute><PatientsList/></ProtectedRoute>}/> 
           <Route path="/patients-details/:id" exact element={<ProtectedRoute><PatientDetails/></ProtectedRoute>}/> 
           <Route path="/upload-data" exact element={<ProtectedRoute><UploadData/></ProtectedRoute>}/> 
+          <Route path="/users" exact element={<ProtectedRoute><Users/></ProtectedRoute>}/> 
         </Routes>
       </Container>
     </Router>

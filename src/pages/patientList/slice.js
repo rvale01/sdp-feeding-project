@@ -8,7 +8,7 @@ export const getPatientsList = createAsyncThunk('patients-list', async () => {
 })
 
 export const loginSlice = createSlice({
-    name: 'counter',
+    name: 'login',
     initialState:{
         status: "idle",
         error: null,

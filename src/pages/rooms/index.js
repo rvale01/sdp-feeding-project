@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import { getPatientsList, patientsSelector, statusSelector } from './slice'
+import { roomsSelector, statusSelector, getRoomsList } from './slice'
 
 
 //components
-import { Table, Tag, Button, Card, Radio, Typography } from 'antd';
+import { Table, Button, Card, Radio, Typography } from 'antd';
 const { Title } = Typography;
 
 const columns = [
@@ -19,8 +19,8 @@ const columns = [
       dataIndex: 'patient_name',
     },
     {
-      title: 'Stuff',
-      dataIndex: 'stuff',
+      title: 'Staff', 
+      dataIndex: 'staff',
     },
     {
       title: '',
@@ -41,10 +41,8 @@ export const RoomsList = () =>{
     const dispatch = useDispatch()
     const roomsList = useSelector(roomsSelector)
     const status = useSelector(statusSelector)
-    const [selectedTab, setSelectedTab] = useState("All")
 
     useEffect(()=>{
-        // TODO: filter the list once the database is up to date
         dispatch(getRoomsList())
     }, [])
     
@@ -54,14 +52,6 @@ export const RoomsList = () =>{
           Rooms List
         </Title>
         <Card className="criclebox">
-            <Radio.Group
-                options={["All", "Needs Referral"]}
-                onChange={(selected)=>setSelectedTab(selected.target.value)}
-                value={selectedTab}
-                optionType="button"
-                buttonStyle="solid"
-                style={{marginBottom: '20px'}}
-            />
             <Table
                 columns={columns}
                 dataSource={roomsList ? roomsList : null}

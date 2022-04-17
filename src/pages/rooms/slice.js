@@ -2,25 +2,18 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import axios from 'axios'
 
-export const getPatientsList = createAsyncThunk('roomss-list', async () => {
+export const getRoomsList = createAsyncThunk('rooms-list', async () => {
       const response = await axios.request("/rooms-list")
       return response
 })
 
-export const loginSlice = createSlice({
+export const roomsSlice = createSlice({
     name: 'counter',
     initialState:{
         status: "idle",
         error: null,
         list: [],
         singleRoom: null
-    },
-    reducers: {
-        getRoom:(state, action)=>{
-            console.log("action?")
-            const singleRoom = state.list.filter((value)=>value)
-            console.log(singleRoom, 'single room')
-        }
     },
     extraReducers: (builder) => {
         // rooms-list
@@ -43,11 +36,8 @@ export const loginSlice = createSlice({
     },
   })
 
-export const { getRoom } = loginSlice.actions
-
 export const statusSelector = state => state.rooms.status
 export const errorSelector = state => state.rooms.error
 export const roomsSelector = state => state.rooms.list
-export const singlePatientSelector = state => state.rooms.singleRoom
 
-export default loginSlice.reducer
+export default roomsSlice.reducer

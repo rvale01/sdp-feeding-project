@@ -43,12 +43,12 @@ export const PatientsList = () =>{
         ),
       },
       {
-        title: 'Referred',
-        dataIndex: 'referred',
-        render: (referred, index) => (
+        title: 'Needs Referral',
+        dataIndex: 'referral',
+        render: (referral, index) => (
           <>
-              <Tag color={referred === 0 ? "#f50" : "#87d068"} key={index}>
-                  {referred === 0 ? "No": "Yes"}
+              <Tag color={referral === 0 ? "#f50" : "#87d068"} key={index}>
+                  {referral === 0 ? "No": "Yes"}
               </Tag>
           </>
         ),
@@ -74,7 +74,7 @@ export const PatientsList = () =>{
       if(selectedTab === "All"){
         setFilteredList(patientsList)
       }else{
-        setFilteredList(patientsList.filter((value)=>value.referred === 1))
+        setFilteredList(patientsList.filter((value)=>value.referral === 1))
       }
     }, [selectedTab, patientsList])
     
@@ -98,7 +98,6 @@ export const PatientsList = () =>{
                 loading={status === 'loading'}
             />
         </Card>
-      
       </div>
     )
 }

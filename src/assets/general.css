@@ -19,9 +19,15 @@ body > div, .full-height {
     border-radius: 12px;
 }
 
-.grid-2{
+.grid-3{
     display: grid;
     grid-template-columns: auto auto auto;
+    gap: 0.9rem;
+}
+
+.grid-4{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     gap: 0.9rem;
 }
 
@@ -45,7 +51,6 @@ body > div, .full-height {
 }
 
 .login-container{
-    /* width: 55%; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,4 +102,37 @@ body > div, .full-height {
 
 .upload-data-container{
     margin-top: 10rem;
+}
+
+/* ---USER PAGE --- */
+.header-style{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@keyframes rotate{
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
+}
+.loading-spinner {
+    animation: rotate infinite 3s;
+}
+
+@keyframes heartbeat{
+    0% {transform: scale(0.5)}
+    100% {transform: scale(1)}
+}
+
+.heart{
+    animation: heartbeat infinite 3s;
+}
+
+/* --- PATIENT DETAILS --- */
+.monitor-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
