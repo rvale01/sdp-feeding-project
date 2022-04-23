@@ -17,11 +17,16 @@ export const Users = () =>{
     const newUserStatus = useSelector(newUserStatusSelector)
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [role, setRole] = useState('admin')
     const [password, setPassword] = useState()
     const [fullName, setFullName] = useState()
     const [email, setEmail] = useState()
 
+    const [role, setRole] = useState()
+    useEffect(()=>{
+        if(localStorage.getItem('role')){
+            setRole(localStorage.getItem('role'))
+        }
+    }, [])
 
     const columns = [
       {
@@ -53,11 +58,13 @@ export const Users = () =>{
       <div>
         <div className="header-style">
           <Title>
-            Patients List
+            Users List
           </Title>
-          <Button onClick={()=>setIsModalVisible(true)} type="primary">
-            Add User
-          </Button>
+          { role && role.toLowerCase() === 'admin' ? 
+            <Button onClick={()=>setIsModalVisible(true)} type="primary">
+              Add User
+            </Button>
+          : null }
         </div>
         <Card className="criclebox">
             <Table
@@ -76,29 +83,32 @@ export const Users = () =>{
           Add User
           </Button>,
         ]}
+        onCancel={()=>setIsModalVisible(false)}
       >
-        <div>
-          <Text strong>Full Name</Text>
-          <Input type="text" onChange={(event)=>setFullName(event.target.value)}/>
-        </div>
+        <div style={{gap: 10, display: 'flex', flexDirection: 'column'}}>
+          <div>
+            <Text strong>Full Name</Text>
+            <Input type="text" onChange={(event)=>setFullName(event.target.value)}/>
+          </div>
 
-        <div>
-          <Text strong>Email</Text>
-          <Input type="email" onChange={(event)=>setEmail(event.target.value)}/>
-        </div>
+          <div>
+            <Text strong>Email</Text>
+            <Input type="email" onChange={(event)=>setEmail(event.target.value)}/>
+          </div>
 
-        <div>
-          <Text strong>Role</Text>
-          <Select defaultValue="admin" onChange={(event)=>setRole(event.target.value)}>
-            <Option value="admin">Admin</Option>
-            <Option value="doctor">Doctor</Option>
-            <Option value="nurse">Nurse</Option>
-          </Select>
-        </div>
+          <div style={{display: 'flex', flexDirection: 'column'}}>
+            <Text strong>Role</Text>
+            <Select defaultValue="admin" onChange={(event)=>setRole(event.target.value)}>
+              <Option value="admin">Admin</Option>
+              <Option value="doctor">Doctor</Option>
+              <Option value="nurse">Nurse</Option>
+            </Select>
+          </div>
 
-        <div>
-          <Text strong>Password</Text>
-          <Input type="password" onChange={(event)=>setPassword(event.target.value)}/>
+          <div>
+            <Text strong>Password</Text>
+            <Input type="password" onChange={(event)=>setPassword(event.target.value)}/>
+          </div>
         </div>
       </Modal>
       </>

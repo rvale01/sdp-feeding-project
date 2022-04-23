@@ -7,6 +7,7 @@ import { roomsSelector, statusSelector, getRoomsList } from './slice'
 
 //components
 import { Table, Button, Card, Radio, Typography } from 'antd';
+import { Link } from "react-router-dom";
 const { Title } = Typography;
 
 const columns = [
@@ -15,26 +16,16 @@ const columns = [
       dataIndex: 'room_id',
     },
     {
-      title: 'Name',
-      dataIndex: 'patient_name',
-    },
-    {
-      title: 'Staff', 
-      dataIndex: 'staff',
-    },
-    {
-      title: '',
-      dataIndex: '',
+      title: 'Patient Id',
+      dataIndex: 'patient_id',
       render: (value, index) => (
-        <Button  
-          key={index} 
-          type="link" 
-          onClick={()=> window.location.replace(`${window.location.origin}/patients-details/${value.id}`)}
-        >
-          Open...
-        </Button>
+        <Link to={`/patients-details/${value}`} key={index}>{value}</Link>
       ),
     },
+    {
+      title: 'Staff email', 
+      dataIndex: 'staff_email',
+    }
   ];
 
 export const RoomsList = () =>{

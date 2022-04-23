@@ -5,25 +5,24 @@ import axios from 'axios'
 export const loginUser = createAsyncThunk('login', async ({email, password}) => {
       const response = await axios.request("/login", {params: {email, password}})
       return response
-        // .then((value)=>(value.data === "Not found" ? console.log("Error") : ))
 })
 
 export const loginSlice = createSlice({
     name: 'counter',
     initialState:{
         status: "idle",
-        error: null,
+        error: null
     },
     extraReducers: (builder) => {
         // login
         builder.addCase(loginUser.pending, (state, action) => {
             state.status = 'loading'
-            console.log(action.response, 'response')
         })
         builder.addCase(loginUser.fulfilled, (state, action) => {
-            if(action.payload.data !== 'Not found'){
-                state.status = 'success'
-                sessionStorage.setItem("sessionId", action.payload.data)
+            if(action.payload.response !== 'Not found'){
+                state.status = 'loading'
+                sessionStorage.setItem("sessionId", action.payload.data.sessionId)
+                localStorage.setItem("role", action.payload.data.role)
                 window.location.reload();
             }else{
                 state.status = 'error'
@@ -31,7 +30,6 @@ export const loginSlice = createSlice({
         })
         builder.addCase(loginUser.rejected, (state, action) => {
             state.status = 'error'
-            console.log(action.response, 'response')
         })
     },
   })

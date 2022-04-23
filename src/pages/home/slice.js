@@ -3,8 +3,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export const patientsData = createAsyncThunk('patientsData', async () => {
-      const response = await axios.request("/patients-data")
-      return response
+    const response = await axios.request("/patients-data")
+    return response
 })
 
 export const patientsDataSlice = createSlice({
@@ -20,11 +20,7 @@ export const patientsDataSlice = createSlice({
             state.status = 'loading'
         })
         builder.addCase(patientsData.fulfilled, (state, action) => {
-            if(action.payload.data !== 'Not found'){
-                state.patientsData = action.payload
-            }else{
-                state.status = 'error'
-            }
+            state.patientsData = action.payload.data
         })
         builder.addCase(patientsData.rejected, (state, action) => {
             state.status = 'error'

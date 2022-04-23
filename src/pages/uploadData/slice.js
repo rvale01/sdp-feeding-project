@@ -4,7 +4,6 @@ import axios from 'axios'
 
 export const uploadCSV = createAsyncThunk('add-user', async ({file}) => {
     var qs = require('qs');
-    console.log({file: file.data}, 'is this the file?')
     const data = JSON.stringify({file: file.data})
     
     const response = await axios({

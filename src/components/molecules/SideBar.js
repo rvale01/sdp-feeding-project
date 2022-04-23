@@ -1,48 +1,75 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 //design
 import { Menu, Card } from "antd";
+import { useDispatch } from "react-redux";
+import { getRole } from "../../pages/login/slice";
 const { SubMenu } = Menu;
 
 export const SideBar = () => {
     const { pathname } = useLocation();
+    const [path, setPath] = useState()
+    const dispatch = useDispatch()
+    const [role, setRole] = useState()
+    useEffect(()=>{
+        if(localStorage.getItem('role')){
+            setRole(localStorage.getItem('role'))
+        }
+    }, [])
+
+    useEffect(()=>{
+        setPath(pathname)
+    }, [pathname])
+
+    const handleLogout = () => {
+        localStorage.removeItem('role')
+        sessionStorage.removeItem('sessionId')
+        window.location.reload();
+    }
+
     return (
         <div className="sidebar">
         <Menu theme="light" mode="inline" className="menu">
-            <Menu.Item key="1" className={pathname === "/" ? 'ant-menu-item-selected' : null}>
+            <Menu.Item key="1" >
                 <NavLink to="/">
                     <span className="label">Home</span>
                 </NavLink>
             </Menu.Item>
 
-            <Menu.Item key="2" className={pathname.includes("patients") ? 'ant-menu-item-selected' : null}>
+            <Menu.Item key="2">
                 <NavLink to="/patients-list">
                     <span className="label">Patients</span>
                 </NavLink>
             </Menu.Item>
 
-            <Menu.Item key="3" className={pathname === "/upload-data" ? 'ant-menu-item-selected' : null}>
-                <NavLink to="/upload-data">
-                    <span className="label">Upload Data</span>
-                </NavLink>
-            </Menu.Item>
+            {role && role.toLowerCase() === 'admin' ?
+                <Menu.Item key="3" >
+                    <NavLink to="/upload-data">
+                        <span className="label">Upload Data</span>
+                    </NavLink>
+                </Menu.Item>
+            : null }
 
-            <Menu.Item key="4" className={pathname === "/users" ? 'ant-menu-item-selected' : null}>
-                <NavLink to="/users">
-                    <span className="label">Users</span>
-                </NavLink>
+            {role && role.toLowerCase() === 'admin' ?
+                <Menu.Item key="4" >
+                    <NavLink to="/users">
+                        <span className="label">Users</span>
+                    </NavLink>
+                </Menu.Item>
+            : null }
+
+            {role && role.toLowerCase() === 'admin' ?
+                <Menu.Item key="5" className={null}>
+                    <NavLink to="/rooms">
+                        <span className="label">Rooms</span>
+                    </NavLink>
+                </Menu.Item>
+            : null }
+
+            <Menu.Item key="6" onClick={handleLogout}>
+                <span className="label">Logout</span>
             </Menu.Item>
-            {/* <SubMenu key="sub1" title="Patients">
-                <Menu.ItemGroup key="g1" title="Item 1">
-                    <Menu.Item key="19">Option 1</Menu.Item>
-                    <Menu.Item key="29">Option 2</Menu.Item>
-                </Menu.ItemGroup>
-                <Menu.ItemGroup key="g2" title="Item 2">
-                    <Menu.Item key="3">Option 3</Menu.Item>
-                    <Menu.Item key="4">Option 4</Menu.Item>
-                </Menu.ItemGroup>
-            </SubMenu> */}
         </Menu>
       </div>
     )

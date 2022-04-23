@@ -36,7 +36,6 @@ export const UploadData = () =>{
             </Title>
             <input type="file" id="myFile" accept=".csv"  ref={inputFileRef} onChange={handleClick} style={{visibility:'hidden'}}/>
 
-            {console.log(status, 'status')}
             <div className="upload-data-container">
                 <Card className="criclebox upload-data-card">
                     {status === 'loading' ? 

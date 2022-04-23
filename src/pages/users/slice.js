@@ -39,7 +39,6 @@ export const usersSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getUsers.pending, (state, action) => {
             state.status = 'loading'
-            console.log(action.response, 'response')
         })
         builder.addCase(getUsers.fulfilled, (state, action) => {
             if(action.payload.data !== 'Not found'){
@@ -51,7 +50,6 @@ export const usersSlice = createSlice({
         })
         builder.addCase(getUsers.rejected, (state, action) => {
             state.status = 'error'
-            console.log(action.response, 'response')
         })
 
         builder.addCase(addUser.pending, (state, action) => {
@@ -66,7 +64,6 @@ export const usersSlice = createSlice({
         })
         builder.addCase(addUser.rejected, (state, action) => {
             state.newUserStatus = 'error'
-            console.log(action.response, 'response')
         })
     },
   })

@@ -19,19 +19,17 @@ export const roomsSlice = createSlice({
         // rooms-list
         builder.addCase(getRoomsList.pending, (state, action) => {
             state.status = 'loading'
-            console.log(action.response, 'response')
         })
         builder.addCase(getRoomsList.fulfilled, (state, action) => {
             if(action.payload.data !== 'Not found'){
                 state.status = 'success'
-                state.list = action.payload.data.rooms_list
+                state.list = action.payload.data.rooms
             }else{
                 state.status = 'error'
             }
         })
         builder.addCase(getRoomsList.rejected, (state, action) => {
             state.status = 'error'
-            console.log(action.response, 'response')
         })
     },
   })

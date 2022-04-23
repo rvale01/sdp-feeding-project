@@ -18,6 +18,7 @@ export const loginSlice = createSlice({
     reducers: {
         getPatient:(state, action)=>{
             const id = window.location.pathname.replace("/patients-details/", "")
+            current(state.list)
             state.singlePatient = state.list.filter(patient => patient.id === parseInt(id))[0];
         }
     },
@@ -25,7 +26,6 @@ export const loginSlice = createSlice({
         // patients-list
         builder.addCase(getPatientsList.pending, (state, action) => {
             state.status = 'loading'
-            console.log(action.response, 'response')
         })
         builder.addCase(getPatientsList.fulfilled, (state, action) => {
             if(action.payload.data !== 'Not found'){
@@ -37,7 +37,6 @@ export const loginSlice = createSlice({
         })
         builder.addCase(getPatientsList.rejected, (state, action) => {
             state.status = 'error'
-            console.log(action.response, 'response')
         })
     },
   })
