@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser, statusSelector, getRole } from './slice'
+import { loginUser, statusSelector } from './slice'
 
 
 //components

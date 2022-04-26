@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,7 +6,7 @@ import { roomsSelector, statusSelector, getRoomsList } from './slice'
 
 
 //components
-import { Table, Button, Card, Radio, Typography } from 'antd';
+import { Table, Card, Typography } from 'antd';
 import { Link } from "react-router-dom";
 const { Title } = Typography;
 

@@ -19,7 +19,7 @@ export const loginSlice = createSlice({
             state.status = 'loading'
         })
         builder.addCase(loginUser.fulfilled, (state, action) => {
-            if(action.payload.response !== 'Not found'){
+            if(action.payload.data !== 'Not found'){
                 state.status = 'loading'
                 sessionStorage.setItem("sessionId", action.payload.data.sessionId)
                 localStorage.setItem("role", action.payload.data.role)

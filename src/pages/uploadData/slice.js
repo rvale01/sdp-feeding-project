@@ -1,9 +1,8 @@
-import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import axios from 'axios'
 
 export const uploadCSV = createAsyncThunk('add-user', async ({file}) => {
-    var qs = require('qs');
     const data = JSON.stringify({file: file.data})
     
     const response = await axios({
