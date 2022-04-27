@@ -4,6 +4,8 @@ In order to run this project locally, make sure to have Node and npm installed l
 
 <h3>Steps to follow to run the project locally</h3>
 
+Before running the frontend code, you need to make sure to run the python code too.
+
 First clone the project:
 <code>git clone https://gitlab.uwe.ac.uk/am2-feetham/system-development-feeding-dashboard.git</code><br/>
 
