@@ -2,6 +2,8 @@
 <h3>Requirements</h3>
 In order to run this project locally, make sure to have Node and npm installed locally
 
+Before running the frontend code, you need to make sure to run the python code too (from the API repo).
+
 <h3>Steps to follow to run the project locally</h3>
 
 First clone the project:

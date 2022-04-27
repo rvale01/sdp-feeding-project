@@ -146,3 +146,11 @@ body > div, .full-height {
     align-items: center;
     flex-direction: column;
 }
+
+/* --- HOME ---- */
+.doctors-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
