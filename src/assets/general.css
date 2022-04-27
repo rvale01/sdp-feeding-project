@@ -99,6 +99,18 @@ body > div, .full-height {
     border-right: 0 !important;
 }
 
+/* -- Add Patient -- */
+
+.autofill-upload {
+    width: 10%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+    /*margin: auto*/
+}
+
 /* -- UPLOAD DATA -- */
 .upload-data-card{
     width: 40%;

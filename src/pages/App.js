@@ -13,6 +13,7 @@ import { Home } from './home'
 import { PatientsList } from './patientList'
 import { PatientDetails } from './patientDetails'
 import { UploadData } from './uploadData'
+import { AddPatient } from './addPatient'
 import { Users } from './users'
 import { RoomsList } from './rooms'
 
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/patients-list" exact element={<ProtectedRoute><PatientsList/></ProtectedRoute>}/> 
           <Route path="/patients-details/:id" exact element={<ProtectedRoute><PatientDetails/></ProtectedRoute>}/> 
           <Route path="/upload-data" exact element={<ProtectedRoute><UploadData/></ProtectedRoute>}/> 
+          <Route path="/add-patient" exact element={<ProtectedRoute><AddPatient/></ProtectedRoute>}/> 
           <Route path="/users" exact element={<ProtectedRoute><Users/></ProtectedRoute>}/> 
           <Route path="/rooms" exact element={<ProtectedRoute><RoomsList/></ProtectedRoute>}/> 
         </Routes>

@@ -53,6 +53,14 @@ export const SideBar = () => {
 
             {role && role.toLowerCase() === 'admin' ?
                 <Menu.Item key="4" >
+                    <NavLink to="/add-patient">
+                        <span className="label">Add Patient</span>
+                    </NavLink>
+                </Menu.Item>
+            : null }
+
+            {role && role.toLowerCase() === 'admin' ?
+                <Menu.Item key="5" >
                     <NavLink to="/users">
                         <span className="label">Users</span>
                     </NavLink>
@@ -60,14 +68,14 @@ export const SideBar = () => {
             : null }
 
             {role && role.toLowerCase() === 'admin' ?
-                <Menu.Item key="5" className={null}>
+                <Menu.Item key="6" className={null}>
                     <NavLink to="/rooms">
                         <span className="label">Rooms</span>
                     </NavLink>
                 </Menu.Item>
             : null }
 
-            <Menu.Item key="6" onClick={handleLogout}>
+            <Menu.Item key="7" onClick={handleLogout}>
                 <span className="label">Logout</span>
             </Menu.Item>
         </Menu>
