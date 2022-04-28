@@ -2,14 +2,15 @@ import React, {useRef} from "react";
 
 //components
 
-import {addPatient } from './slice'
-import { useDispatch } from "react-redux";
+import { addPatient, statusSelector } from './slice'
+import { useDispatch, useSelector } from "react-redux";
 
-import { Typography, Input, Card } from 'antd';
+import { Typography, Input, Button } from 'antd';
 const { Title, Text } = Typography;
 
 export const AddPatient = () =>{
     const dispatch = useDispatch()
+    const status = useSelector(statusSelector)
 
     const submitBtn = () => {
         var results = document.getElementById("f_n").value + ","
@@ -192,11 +193,14 @@ export const AddPatient = () =>{
                 </div>
             </div>
 
-            <Card className="criclebox" style={{width:'10%', height: '10%', backgroundColor: '#2d4880', textAlign: 'center', margin: '1rem'}} onClick={submitBtn}>
-                  <Title level={5} style={{color: 'white'}}>
-                      Submit
-                  </Title>
-            </Card>
+            <Button 
+                    type="primary" 
+                    size="large" 
+                    loading = {status === 'loading'}
+                    onClick={submitBtn}
+                >
+                    Add Patient
+                </Button>
         </div>
     )
 }

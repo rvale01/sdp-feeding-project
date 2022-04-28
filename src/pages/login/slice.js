@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk('login', async ({email, password}) => 
 })
 
 export const loginSlice = createSlice({
-    name: 'counter',
+    name: 'login',
     initialState:{
         status: "idle",
         error: null
