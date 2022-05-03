@@ -65,5 +65,6 @@ export const statusSelector = state => state.patients.status
 export const errorSelector = state => state.patients.error
 export const patientsSelector = state => state.patients.list
 export const singlePatientSelector = state => state.patients.singlePatient
+export const setReferredStatusSelector = state => state.patients.setReferredStatus
 
 export default loginSlice.reducer

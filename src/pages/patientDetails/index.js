@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
-import { getPatient, singlePatientSelector, setReferred } from '../patientList/slice'
+import { getPatient, singlePatientSelector, setReferred, setReferredStatusSelector } from '../patientList/slice'
 import { faHeart, faLungs, faThermometer, faMaskVentilator } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -13,6 +13,7 @@ const { Title, Text } = Typography;
 export const PatientDetails = React.memo(() =>{
     const dispatch = useDispatch()
     const singlePatient = useSelector(singlePatientSelector)
+    const status = useSelector(setReferredStatusSelector)
 
     useEffect(()=>{
         dispatch(getPatient())
@@ -24,7 +25,7 @@ export const PatientDetails = React.memo(() =>{
     }
 
     return (
-        <div>
+        <div style={{opacity: status==='loading' ? '0.5' : '1', pointerEvents: status==='loading' ? 'none' : 'inherit'}}>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <Title className="vertical-align gap-2">
                     {singlePatient && singlePatient.full_name} - {singlePatient && singlePatient.id} 
