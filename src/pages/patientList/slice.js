@@ -7,13 +7,20 @@ export const getPatientsList = createAsyncThunk('patients-list', async () => {
       return response
 })
 
+export const setReferred = createAsyncThunk('set-referred', async () => {
+    const id = window.location.pathname.replace("/patients-details/", "")
+    const response = await axios.request("/set-referred", {params: {id}})
+    return response
+})
+
 export const loginSlice = createSlice({
     name: 'login',
     initialState:{
         status: "idle",
         error: null,
         list: [],
-        singlePatient: null
+        singlePatient: null,
+        setReferredStatus: 'idle'
     },
     reducers: {
         getPatient:(state, action)=>{
@@ -37,6 +44,17 @@ export const loginSlice = createSlice({
         })
         builder.addCase(getPatientsList.rejected, (state, action) => {
             state.status = 'error'
+        })
+
+        builder.addCase(setReferred.pending, (state, action) => {
+            state.setReferredStatus = 'loading'
+        })
+        builder.addCase(setReferred.fulfilled, (state, action) => {
+            state.setReferredStatus = 'success'
+            window.location.reload()
+        })
+        builder.addCase(setReferred.rejected, (state, action) => {
+            state.setReferredStatus = 'error'
         })
     },
   })

@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
-import { getPatient, singlePatientSelector } from '../patientList/slice'
+import { getPatient, singlePatientSelector, setReferred } from '../patientList/slice'
 import { faHeart, faLungs, faThermometer, faMaskVentilator } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 //components
-import { Typography, Input, Tag, Card } from 'antd';
+import { Typography, Input, Tag, Card, Button } from 'antd';
 const { Title, Text } = Typography;
 
 export const PatientDetails = React.memo(() =>{
@@ -25,16 +25,23 @@ export const PatientDetails = React.memo(() =>{
 
     return (
         <div>
-            <Title className="vertical-align gap-2">
-                {singlePatient && singlePatient.full_name} - {singlePatient && singlePatient.id} 
-                {
-                    singlePatient && singlePatient.referred 
-                    ? 
-                        <Tag color="#87d068">Referred</Tag>
-                    : 
-                        <Tag color="#f50">Not Referred</Tag>
-                }
-            </Title>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <Title className="vertical-align gap-2">
+                    {singlePatient && singlePatient.full_name} - {singlePatient && singlePatient.id} 
+                    {
+                        singlePatient && singlePatient.referred 
+                        ? 
+                            <Tag color="#87d068">Needs referral</Tag>
+                        : 
+                            <Tag color="#f50">Does not need referral</Tag>
+                    }
+                </Title>
+                {singlePatient.referred
+                ? <Button onClick={()=>dispatch(setReferred({id: '39393'}))}>
+                    Set as Referred
+                    </Button>
+                : null}
+            </div>
         <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
             <div className="grid-4">
                 <Card className="criclebox">
