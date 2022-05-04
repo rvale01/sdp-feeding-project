@@ -37,7 +37,7 @@ export const PatientDetails = React.memo(() =>{
                             <Tag color="#f50">Does not need referral</Tag>
                     }
                 </Title>
-                {singlePatient.referred
+                {singlePatient && singlePatient.referred
                 ? <Button onClick={()=>dispatch(setReferred({id: '39393'}))}>
                     Set as Referred
                     </Button>
