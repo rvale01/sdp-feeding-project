@@ -24,21 +24,22 @@ export const PatientDetails = React.memo(() =>{
         return "None"
     }
 
+    console.log(singlePatient)
     return (
         <div style={{opacity: status==='loading' ? '0.5' : '1', pointerEvents: status==='loading' ? 'none' : 'inherit'}}>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <Title className="vertical-align gap-2">
                     {singlePatient && singlePatient.full_name} - {singlePatient && singlePatient.id} 
                     {
-                        singlePatient && singlePatient.referred 
+                        singlePatient && singlePatient.referral === 1
                         ? 
                             <Tag color="#87d068">Needs referral</Tag>
                         : 
                             <Tag color="#f50">Does not need referral</Tag>
                     }
                 </Title>
-                {singlePatient && singlePatient.referred
-                ? <Button onClick={()=>dispatch(setReferred({id: '39393'}))}>
+                {singlePatient && singlePatient.referral === 1
+                ? <Button onClick={()=>dispatch(setReferred({id: '39393'}))} type="primary">
                     Set as Referred
                     </Button>
                 : null}

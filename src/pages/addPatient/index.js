@@ -194,13 +194,14 @@ export const AddPatient = () =>{
             </div>
 
             <Button 
-                    type="primary" 
-                    size="large" 
-                    loading = {status === 'loading'}
-                    onClick={submitBtn}
-                >
-                    Add Patient
-                </Button>
+                type="primary" 
+                size="large" 
+                loading = {status === 'loading'}
+                onClick={submitBtn}
+                style={{margin: '1rem 0 2rem 0'}}
+            >
+                Add Patient
+            </Button>
         </div>
     )
 }

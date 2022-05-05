@@ -9,8 +9,15 @@ export const getPatientsList = createAsyncThunk('patients-list', async () => {
 
 export const setReferred = createAsyncThunk('set-referred', async () => {
     const id = window.location.pathname.replace("/patients-details/", "")
-    const response = await axios.request("/set-referred", {params: {id}})
-    return response
+    const response = await axios({
+        method: 'POST',
+        url: '/set-referred',
+        headers: { 
+            'Content-Type': 'application/json; charset=utf-8'
+        },
+        data: {id: id},
+    })
+    return {response, id}
 })
 
 export const loginSlice = createSlice({
@@ -51,7 +58,7 @@ export const loginSlice = createSlice({
         })
         builder.addCase(setReferred.fulfilled, (state, action) => {
             state.setReferredStatus = 'success'
-            window.location.reload()
+            state.singlePatient.referral = 0
         })
         builder.addCase(setReferred.rejected, (state, action) => {
             state.setReferredStatus = 'error'

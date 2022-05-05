@@ -58,6 +58,7 @@ export const usersSlice = createSlice({
         builder.addCase(addUser.fulfilled, (state, action) => {
             if(action.payload.data !== 'Not found'){
                 state.newUserStatus = 'success'
+                window.location.reload()
             }else{
                 state.newUserStatus = 'error'
             }
