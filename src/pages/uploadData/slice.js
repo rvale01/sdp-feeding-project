@@ -30,7 +30,7 @@ export const uploadSlice = createSlice({
         builder.addCase(uploadCSV.fulfilled, (state, action) => {
             if(action.payload.data === 'okay'){
                 state.status = 'success'
-                window.location.replace("upload-data", "patients-list")
+                window.location.replace("/patients-list")
             }else{
                 state.status = 'error'
             }
